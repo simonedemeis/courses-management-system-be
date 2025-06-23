@@ -6,4 +6,4 @@
 
 # RESET DATABASE
 
-1. Lanciare il comando "npm run database:reset" --> il database viene vsvuotato e viene eseguito nuovamente il seeding.
+1. Lanciare il comando "npm run database:reset" --> il database viene svuotato e viene eseguito nuovamente il seeding.
