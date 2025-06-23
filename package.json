@@ -1,0 +1,35 @@
+{
+  "name": "server",
+  "type": "module",
+  "scripts": {
+    "start": "tsx watch src/index.ts",
+    "database:seed": "tsx ./src/drizzle/seeder.ts",
+    "database:clear": "tsx ./src/drizzle/reset.ts",
+    "database:reset": "tsx ./src/drizzle/reset.ts && npm run database:seed",
+    "database:studio": "drizzle-kit studio",
+    "database:create-migration": "drizzle-kit generate",
+    "database:migrate": "drizzle-kit migrate"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.15.6",
+    "argon2": "^0.41.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "drizzle-orm": "^0.43.1",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "pino": "^9.7.0",
+    "pino-pretty": "^13.0.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.9",
+    "@types/cors": "^2.8.18",
+    "@types/express": "^5.0.1",
+    "@types/jsonwebtoken": "^9.0.9",
+    "@types/node": "^20.11.17",
+    "drizzle-kit": "^0.31.1",
+    "tsx": "^4.19.4"
+  }
+}
