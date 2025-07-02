@@ -116,20 +116,17 @@ app.post("/api/login", (req: Request, res: Response) => {
       // Imposta il refreshToken come cookie HttpOnly
       res.cookie("refreshToken", token.refreshToken, {
         httpOnly: true,
-        secure: false, // usa HTTPS in produzione
-        sameSite: "lax", // oppure "Lax" se serve compatibilità
-        maxAge: 7 * 24 * 60 * 60 * 1000, // 7 giorni
+        secure: false, // usare HTTPS in produzione
+        sameSite: "none", 
+        maxAge: 604800000, // 7 giorni
       });
 
       logger.info("Login success!");
 
-      // Ritorna solo l'accessToken nel body
-      setTimeout(() => {
-        return res.status(200).json({
-          message: "Login success!",
-          accessToken: token.accessToken,
-        });
-      }, 3000);
+      return res.status(200).json({
+        message: "Login success!",
+        accessToken: token.accessToken,
+      });
     })
     .catch((e) => {
       logger.error("Login exception: " + e.message);
@@ -265,7 +262,7 @@ app.put("/api/courses/update/:id", authorize, (req: Request, res: Response) => {
 });
 
 app.post("/api/refresh-token", (req: Request, res: Response) => {
-  const refreshToken = req.cookies?.refreshToken; 
+  const refreshToken = req.cookies?.refreshToken;
 
   if (!refreshToken) {
     logger.error("No refresh token provided in cookie");
@@ -284,9 +281,9 @@ app.post("/api/refresh-token", (req: Request, res: Response) => {
 
       res.cookie("refreshToken", result.refreshToken, {
         httpOnly: true,
-        secure: false, // o false in sviluppo
-        sameSite: "lax",
-        maxAge: 7 * 24 * 60 * 60 * 1000,
+        secure: false,
+        sameSite: "none",
+        maxAge: 604800000,
       });
 
       // Ritorna solo il nuovo access token
@@ -304,7 +301,7 @@ app.post("/api/logout", (_req: Request, res: Response) => {
   res.clearCookie("refreshToken", {
     httpOnly: true,
     secure: false,
-    sameSite: "lax",
+    sameSite: "none",
   });
 
   logger.info("User logged out, refresh token cookie cleared");
