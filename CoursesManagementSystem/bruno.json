@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "CoursesManagementSystem",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

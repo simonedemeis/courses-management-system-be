@@ -1,7 +1,8 @@
 import { logger } from "../services/loggerService.ts";
 import { db } from "./database.ts";
 import { categories, courses, users } from "./schema.ts";
-import * as argon2 from "argon2";
+// import * as argon2 from "argon2";
+import { hashPassword } from "../lib/utils.ts";
 
 async function seedUsers() {
   const usersList = await db.query.users.findMany();
@@ -10,7 +11,7 @@ async function seedUsers() {
     return logger.warn("Cannot seed users: database already initialized");
   }
 
-  const passwordHash = await argon2.hash("@B7lpxQ9!kW2zm");
+  const passwordHash = await hashPassword("@B7lpxQ9!kW2zm");
 
   await db.insert(users).values({
     id: 1,

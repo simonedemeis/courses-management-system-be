@@ -1,6 +1,5 @@
 import express, { type Request, type Response, type NextFunction } from "express";
 import cors from "cors";
-import { config } from "dotenv";
 import {
   type Register,
   type Login,
@@ -29,8 +28,6 @@ import { logger } from "./services/loggerService.ts";
 import cookieParser from "cookie-parser";
 
 logger.info("Starting application...");
-
-config();
 
 const app = express();
 const port = 3000;

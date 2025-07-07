@@ -3,7 +3,6 @@ import { type UserNoPasswordAndId } from "../lib/types.ts";
 import { users } from "../drizzle/schema.ts";
 import { db } from "../drizzle/database.ts";
 import { eq } from "drizzle-orm";
-import "dotenv/config";
 
 export async function generateToken(
   payload: UserNoPasswordAndId,
