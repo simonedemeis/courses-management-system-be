@@ -2,10 +2,10 @@ import { eq } from "drizzle-orm";
 import { db } from "../drizzle/database.ts";
 import { courses } from "../drizzle/schema.ts";
 import {
-  AddCourseRequest,
-  Course,
-  CourseUpdateModel,
-} from "../lib/interfaces.js";
+  type AddCourseRequest,
+  type Course,
+  type CourseUpdateModel,
+} from "../lib/types.ts";
 import { z } from "zod";
 
 export async function getCourses(): Promise<Course[]> {

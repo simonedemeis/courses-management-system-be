@@ -1,9 +1,9 @@
 import { z } from "zod";
-import { Login, Register } from "../lib/interfaces.ts";
-import { Roles } from "../lib/enums.ts";
+import { type Login, type Register } from "../lib/types.ts";
+import { type Role } from "../lib/types.ts";
 import * as argon2 from "argon2";
 import { generateToken } from "./authService.ts";
-import { UserNoPasswordAndId } from "../lib/types.ts";
+import { type UserNoPasswordAndId } from "../lib/types.ts";
 import jwt from "jsonwebtoken";
 import { db } from "../drizzle/database.ts";
 import { users } from "../drizzle/schema.ts";
@@ -32,12 +32,12 @@ export async function validateRegisterRequest(request: Register) {
 
   const passwordHash = await argon2.hash(validatedRequest.data.password);
 
-  const reqWithHashedPasswordAndRole: Register & { role: string } = {
+  const reqWithHashedPasswordAndRole: Register & { role: Role } = {
     firstName: validatedRequest.data.firstName,
     lastName: validatedRequest.data.lastName,
     email: validatedRequest.data.email,
     password: passwordHash,
-    role: Roles.User,
+    role: "user",
   };
 
   return reqWithHashedPasswordAndRole;

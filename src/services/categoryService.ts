@@ -1,6 +1,6 @@
 import { categories } from "../drizzle/schema.ts";
 import { db } from "../drizzle/database.ts";
-import { Category } from "../lib/interfaces.js";
+import { type Category } from "../lib/types.ts";
 
 export async function getCategories(): Promise<boolean | Category[]> {
 

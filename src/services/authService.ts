@@ -1,6 +1,5 @@
-import jwt, { JwtPayload } from "jsonwebtoken";
+import jwt, { type JwtPayload } from "jsonwebtoken";
 import { type UserNoPasswordAndId } from "../lib/types.ts";
-import { Roles } from "../lib/enums.js";
 import { users } from "../drizzle/schema.ts";
 import { db } from "../drizzle/database.ts";
 import { eq } from "drizzle-orm";
@@ -75,7 +74,7 @@ export function verifyUserAuthorization(token: string | undefined) {
         where: eq(users.email, decodedToken.email),
       })
       .then((user) => {
-        if (!user || user.role !== Roles.Admin) {
+        if (!user || user.role !== "admin") {
           return false;
         }
         return true;

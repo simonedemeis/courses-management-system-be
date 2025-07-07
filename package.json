@@ -2,10 +2,11 @@
   "name": "server",
   "type": "module",
   "scripts": {
-    "start": "tsx watch src/index.ts",
-    "database:seed": "tsx ./src/drizzle/seeder.ts",
-    "database:clear": "tsx ./src/drizzle/reset.ts",
-    "database:reset": "tsx ./src/drizzle/reset.ts && npm run database:seed",
+    "start:erase": "node --watch src/index.ts",
+    "start:compile": "node --watch --experimental-transform-types src/index.ts",
+    "database:seed": "node src/drizzle/seeder.ts",
+    "database:clear": "node src/drizzle/reset.ts",
+    "database:reset": "node src/drizzle/reset.ts && npm run database:seed",
     "database:studio": "drizzle-kit studio",
     "database:create-migration": "drizzle-kit generate",
     "database:migrate": "drizzle-kit migrate"
@@ -29,7 +30,6 @@
     "@types/express": "^5.0.1",
     "@types/jsonwebtoken": "^9.0.9",
     "@types/node": "^20.11.17",
-    "drizzle-kit": "^0.31.1",
-    "tsx": "^4.19.4"
+    "drizzle-kit": "^0.31.1"
   }
 }

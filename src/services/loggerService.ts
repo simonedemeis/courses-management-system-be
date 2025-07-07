@@ -1,4 +1,4 @@
-import pino, { destination } from "pino";
+import pino from "pino";
 
 const today = new Date();
 

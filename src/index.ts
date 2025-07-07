@@ -1,12 +1,12 @@
-import express, { Request, Response, NextFunction } from "express";
+import express, { type Request, type Response, type NextFunction } from "express";
 import cors from "cors";
 import { config } from "dotenv";
 import {
-  Register,
-  Login,
-  AddCourseRequest,
-  CourseUpdateModel,
-} from "./lib/interfaces.ts";
+  type Register,
+  type Login,
+  type AddCourseRequest,
+  type CourseUpdateModel,
+} from "./lib/types.ts";
 import {
   login,
   register,
