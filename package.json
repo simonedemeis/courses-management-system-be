@@ -9,7 +9,13 @@
     "database:reset": "node --env-file=.env src/drizzle/reset.ts && npm run database:seed",
     "database:studio": "drizzle-kit studio",
     "database:create-migration": "drizzle-kit generate",
-    "database:migrate": "drizzle-kit migrate"
+    "database:migrate": "drizzle-kit migrate",
+
+    "start:erase@22": "node --watch --experimental-strip-types --env-file=.env src/index.ts",
+    "start:compile@22": "node --watch --env-file=.env --experimental-transform-types src/index.ts",
+    "database:seed@22": "node --env-file=.env --experimental-transform-types src/drizzle/seeder.ts",
+    "database:clear@22": "node --env-file=.env --experimental-transform-types src/drizzle/reset.ts",
+    "database:reset@22": "node --env-file=.env --experimental-transform-types src/drizzle/reset.ts && npm run database:seed@22"
   },
   "dependencies": {
     "@libsql/client": "^0.15.6",

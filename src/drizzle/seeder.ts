@@ -1,7 +1,6 @@
 import { logger } from "../services/loggerService.ts";
 import { db } from "./database.ts";
 import { categories, courses, users } from "./schema.ts";
-// import * as argon2 from "argon2";
 import { hashPassword } from "../lib/utils.ts";
 
 async function seedUsers() {

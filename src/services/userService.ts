@@ -1,7 +1,6 @@
 import { z } from "zod";
 import { type Login, type Register } from "../lib/types.ts";
 import { type Role } from "../lib/types.ts";
-// import * as argon2 from "argon2";
 import { generateToken } from "./authService.ts";
 import { type UserNoPasswordAndId } from "../lib/types.ts";
 import jwt from "jsonwebtoken";
